@@ -1,6 +1,7 @@
 import '../css/index.scss';
 
 import $ from 'jquery';
+import { createHomePage } from './components/home-page';
 
 document.addEventListener('DOMContentLoaded', async () => {
     window.$ = $;
@@ -10,6 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function init() {
     $('main').append(
-        $('<h1>').text('Витрина туров')
+        createHomePage()
     )
 }
