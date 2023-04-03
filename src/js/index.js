@@ -1,3 +1,5 @@
+import '../css/index.scss';
+
 import $ from 'jquery';
 
 document.addEventListener('DOMContentLoaded', async () => {

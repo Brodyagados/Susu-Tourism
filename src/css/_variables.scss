@@ -1,0 +1,28 @@
+//base
+$base-indent: 20px;
+$base-mobile-indent: 10px;
+$bg-color: white;
+$overlayer-color: #999FA9;
+
+//colors
+$system-color: #074064;
+$system-color-medium: #074064eb;
+$system-color-light: #1F80AC;
+$black-color: #273443;
+
+//landing tour colors
+$landing-tour-red-first-color: #AC2237;
+$landing-tour-red-second-color: #EA556F;
+$landing-tour-blue-first-color: #014D73;
+$landing-tour-blue-second-color: #3590CE;
+$landing-tour-green-first-color: #2C7130;
+$landing-tour-green-second-color: #9DC432;
+$landing-tour-orange-first-color: #E85222;
+$landing-tour-orange-second-color: #F59D0E;
+
+//background
+$gradient-background: linear-gradient(180deg, $system-color 0%, $system-color-light 100%);
+
+//fonts
+$font-helvetica-neue: 'Helvetica Neue';
+$font-helvetica-neue-cyr: 'Helvetica Neue Cyr';
