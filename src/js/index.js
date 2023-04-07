@@ -5,7 +5,7 @@ import $ from 'jquery';
 document.addEventListener('DOMContentLoaded', async () => {
     window.$ = $;
 
-    init();
+    // init();
 });
 
 function init() {
