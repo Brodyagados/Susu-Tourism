@@ -1,13 +1,9 @@
 import { createHomePageMainInfo } from './main-info';
 
 export function createHomePage() {
-    return $('<div class="page_home">').append(
-        createHomePageSection().append(
+    return $('<div class="page page_home">').append(
+        $('<section class="page__section page__section_main-info">').append(
             createHomePageMainInfo()
         )
     )
-}
-
-function createHomePageSection() {
-    return $('<section class="page__section">')
 }
