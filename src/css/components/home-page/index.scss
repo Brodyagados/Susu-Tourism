@@ -1,3 +1,4 @@
+@import '../../mixins';
 @import '../../variables';
 
 @mixin background-image-container($indent, $border-radius) {
@@ -26,21 +27,50 @@
     }
 }
 
+:root {
+    --home-header-title-font-size: 30px;
+    --home-group-title-font-size: 30px;
+    --home-subtitle-font-size: 20px;
+    --home-tour-name-font-size: 20px;
+    --home-tour-caption-font-size: 17px;
+    --home-note-font-size: 15px;
+    --home-indent: #{$base-indent};
+
+    @media (max-width: 767.98px) {
+        --home-header-title-font-size: calc(14px + 2vw);
+        --home-subtitle-font-size: calc(12px + 1vw);
+        --home-group-title-font-size: calc(15px + 1vw);
+        --home-tour-name-font-size: calc(13px + 1vw);
+        --home-tour-caption-font-size: calc(10px + 0.9vw);
+        --home-note-font-size: calc(10px + 0.7vw);
+        --home-indent: #{$base-indent-mobile};
+    }
+}
+
 .page {
     &.page_home {
+        $indent: var(--home-indent);
+
+        display: flex;
+        gap: $indent;
+        flex-direction: column;
+
         .page__section {
+            display: flex;
+            gap: $indent;
+            flex-direction: column;
             background-color: white;
             border-radius: $base-border-radius;
-            padding: $base-indent;
+            padding: $indent;
 
             &.page__section_main-info {
                 display: flex;
-                gap: $base-indent;
+                gap: $indent;
                 flex-direction: column;
 
                 .page__np,
                 .page-description {
-                    @include background-image-container($base-indent, $base-border-radius);
+                    @include background-image-container($indent, $base-border-radius);
                     color: white;
                 }
 
@@ -58,6 +88,11 @@
 
                 .page__title {
                     grid-area: title;
+                    margin: 0;
+                    font: {
+                        size: var(--home-header-title-font-size);
+                        weight: 400;
+                    }
                 }
 
                 .page-subtitle {
@@ -74,7 +109,7 @@
 
                 .page-images {
                     display: grid;
-                    grid-gap: $base-indent;
+                    grid-gap: $indent;
                     grid-template-columns: repeat(4, 1fr);
 
                     .page-images__item {
@@ -88,6 +123,146 @@
 
                 .page__note {
                     font-size: var(--home-note-font-size);
+                }
+            }
+
+            &.page__section_tour-group {
+                $first-color: var(--first-color);
+                $second-color: var(--second-color);
+    
+                &:nth-child(4n-2) {
+                    --first-color: #{$landing-tour-red-first-color};
+                    --second-color: #{$landing-tour-red-second-color};
+                }
+    
+                &:nth-child(4n-1) {
+                    --first-color: #{$landing-tour-blue-first-color};
+                    --second-color: #{$landing-tour-blue-second-color};
+                }
+    
+                &:nth-child(4n) {
+                    --first-color: #{$landing-tour-green-first-color};
+                    --second-color: #{$landing-tour-green-second-color};
+                }
+                
+                &:nth-child(4n+1) {
+                    --first-color: #{$landing-tour-orange-first-color};
+                    --second-color: #{$landing-tour-orange-second-color};
+                }
+
+                .tour-group__title {
+                    $padding: 7px;
+
+                    @include gradient-background($first-color, $second-color);
+                    max-width: 60%;
+                    color: white;
+                    padding: 7px $indent;
+                    margin-left: calc(-1 * $indent);
+
+                    font: {
+                        size: var(--home-group-title-font-size);
+                        weight: 600;
+                    }
+                }
+
+                .tour-group__caption {
+                    font-size: var(--home-tour-caption-font-size);
+                }
+
+                .tour-group-items {
+                    display: grid;
+                    grid-gap: $indent;
+                    grid-template-columns: repeat(2, 1fr);
+    
+                    .tour-group__item {
+                        overflow: hidden;
+                        border-radius: $base-border-radius;
+                        position: relative;
+                        height: 400px;
+                        width: 100%;
+                        z-index: 0;
+    
+                        img {
+                            object-fit: cover;
+                            width: inherit;
+                            height: inherit;
+                        }
+    
+                        .tour-group__item-name {
+                            position: absolute;
+                            bottom: $indent;
+                            left: $indent;
+                            right: $indent;
+                            color: white;
+                            padding: $indent;
+                            text-align: center;
+                            z-index: 1;
+    
+                            font: {
+                                size: var(--home-tour-name-font-size);
+                                weight: 400;
+                            }
+    
+                            &::before {
+                                content: '';
+                                background: $first-color;
+                                border-radius: $base-border-radius;
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                right: 0;
+                                top: 0;
+                                opacity: .7;
+                                z-index: -1;
+                            }
+                        }
+                    }
+                }
+            }
+        
+            @media (max-width: 575.98px) {
+                &.page__section_main-info {
+                    .page-images {
+                        .page-images__item {
+                            height: 150px;
+                        }
+                    }
+                }
+    
+                &.page__section_tour-group {
+                    .tour-group-items {
+                        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    
+                        .tour-group__item {
+                            height: 350px;
+                        }
+                    }
+    
+                    .tour-group__title {
+                        max-width: 85%;
+                    }
+                }
+            }
+        
+            @media (max-width: 991.98px) {
+                &.page__section_main-info {
+                    .page__np {
+                        grid-template-areas: 'logo' 'title' 'subtitle';
+                    }
+                }
+    
+                &.page__section_tour-group {
+                    .tour-group-items {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            }
+        
+            @media (max-width: 1399.98px) {
+                &.page__section_main-info {
+                    .page-images {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
                 }
             }
         }

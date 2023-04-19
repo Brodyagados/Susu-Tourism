@@ -2,8 +2,27 @@
 @import 'fonts';
 @import 'components';
 
+:root {
+    --main-horizontal-indent: 15%;
+    --main-vertical-indent: #{$base-indent};
+
+    @media (max-width: 767.98px) {
+        --main-horizontal-indent: #{$base-indent-mobile};
+        --main-vertical-indent: #{$base-indent-mobile};
+    }
+}
+
 * {
     box-sizing: content-box;
+}
+
+html {
+    $color: #3968DA;
+    $scroll-size: 12px;
+    $scroll-color: rgba($color, .7);
+    $scroll-track-color: rgba($color, .2);
+
+    @include custom-scroll($scroll-size, $scroll-color, $scroll-track-color);
 }
 
 body {
@@ -15,8 +34,14 @@ body {
     user-select: none;
     position: relative;
     min-height: 100vh;
+    margin: 0;
+
+    font: {
+        family: $font-helvetica-neue-cyr;
+        weight: 300;
+    }
 }
 
 main {
-    margin: 0 15%;
+    margin: var(--main-vertical-indent) var(--main-horizontal-indent);
 }

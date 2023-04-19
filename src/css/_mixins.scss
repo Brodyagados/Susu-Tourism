@@ -1,0 +1,30 @@
+@mixin gradient-background($first-color, $second-color) {
+    background: $second-color;
+    background: -webkit-linear-gradient(to right, $first-color, $second-color);
+    background: linear-gradient(to right, $first-color, $second-color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+}
+
+@mixin custom-scroll($scroll-width, $scroll-color, $track-color, $border-radius: $scroll-width) {
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: $scroll-width;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $scroll-color;
+        border-radius: $border-radius;
+        background-clip: content-box;
+        border: 2px solid;
+        color: transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: $border-radius;
+        background-color: $track-color;
+    }
+}
