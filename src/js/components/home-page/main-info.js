@@ -8,7 +8,7 @@ export function createHomePageMainInfo(header) {
     } = header;
 
     const $nationalProjectInfo = (
-        $(`<article class="page__np" style="--title-image: url(${npImage})">`).append(
+        $(`<article class="page__np" style="--title-image: url(${npImage})" data-aos="fade-up">`).append(
             $('<h1 class="page__title">').text(npTitle),
             $(`<img class="page__logo" src="${nationalProjectImage}" alt="">`),
             $('<ul class="page-subtitle">').append(
@@ -18,7 +18,7 @@ export function createHomePageMainInfo(header) {
     );
 
     const $title = (
-        $(`<article class="page-description" style="--title-image: url(${infoImage})">`).append(
+        $(`<article class="page-description" style="--title-image: url(${infoImage})" data-aos="fade-up">`).append(
             $('<h1 class="page__title">').text(infoTitle),
             $('<ul class="page-subtitle">').append(
                 infoSubtitles.map((itm) => $('<li class="page-subtitle__text">').text(itm))
@@ -29,13 +29,12 @@ export function createHomePageMainInfo(header) {
     const $images = (
         $('<article class="page-images">').append(
             images.map((image) =>
-                $(`<img class="page-images__item" src="${image}"
-                        alt="">`)
+                $(`<img class="page-images__item" src="${image}" alt="" data-aos="fade-up">`)
             )
         )
     );
 
-    const $note = $('<aside class="page__note">').text(note);
+    const $note = $('<aside class="page__note" data-aos="fade-up">').text(note);
 
     return createHomePageBaseSection()
         .addClass('page__section_main-info')

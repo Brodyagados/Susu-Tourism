@@ -7,7 +7,7 @@ export function createHomePageTourGroup(group) {
         .addClass('page__section_tour-group')
         .append(
             $('<div class="tour-group__title" data-aos="fade-right">').text(title),
-            $('<div class="tour-group__caption data-aos="fade-up">').text(caption),
+            $('<div class="tour-group__caption" data-aos="fade-up">').text(caption),
             $('<div class="tour-group-items">').append(
                 tours.map(createTour)
             )
